@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raju Kumar | Dev Vault</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@400;600;800&display=swap');
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body { 
+            background-color: #050505; 
+            color: #ffffff; 
+            font-family: 'Outfit', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            /* Cyber Grid Background */
+            background-image: 
+                linear-gradient(rgba(0, 255, 170, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 170, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* 🟢 NEON NAVBAR */
+        .navbar {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(5, 5, 5, 0.8); backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0, 255, 170, 0.2);
+            padding: 15px 5%; display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 4px 30px rgba(0, 255, 170, 0.1);
+        }
+        
+        .brand-logo { 
+            font-family: 'Fira Code', monospace; font-size: 1.5rem; font-weight: 700; 
+            color: #fff; text-decoration: none; display: flex; align-items: center; gap: 10px;
+        }
+        .brand-logo i { color: #00ffaa; text-shadow: 0 0 10px #00ffaa; }
+
+        .nav-menu { display: flex; gap: 20px; }
+        .nav-menu a { 
+            color: #94a3b8; text-decoration: none; font-weight: 600; font-size: 0.95rem; 
+            transition: 0.3s; font-family: 'Fira Code', monospace;
+        }
+        .nav-menu a:hover { color: #00ffaa; text-shadow: 0 0 8px rgba(0,255,170,0.6); }
+
+        /* 🚀 TERMINAL HERO SECTION */
+        .hero {
+            padding: 150px 5% 80px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            text-align: center; position: relative;
+        }
+
+        .terminal-box {
+            background: #0a0a0a; border: 1px solid rgba(0, 255, 170, 0.3);
+            border-radius: 12px; padding: 20px 30px; margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 255, 170, 0.15);
+            max-width: 600px; width: 100%; text-align: left;
+        }
+        .terminal-header { display: flex; gap: 8px; margin-bottom: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;}
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .dot.red { background: #ff5f56; } .dot.yellow { background: #ffbd2e; } .dot.green { background: #27c93f; }
+        
+        .typewriter {
+            font-family: 'Fira Code', monospace; color: #00ffaa; font-size: 1.1rem;
+            white-space: nowrap; overflow: hidden; border-right: 3px solid #00ffaa;
+            animation: typing 3s steps(40, end), blink-caret .75s step-end infinite;
+            width: 100%;
+        }
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: #00ffaa; } }
+
+        .hero h1 { font-size: 3.5rem; font-weight: 800; color: #fff; margin-bottom: 15px; letter-spacing: -1px; }
+        .hero h1 span { color: #00ffaa; text-shadow: 0 0 20px rgba(0,255,170,0.4); }
+        .hero p { font-size: 1.1rem; color: #94a3b8; max-width: 600px; line-height: 1.6; }
+
+        /* 📱 APP VAULT (GRID) */
+        .vault-section { padding: 40px 5% 100px; }
+        .section-title { 
+            font-family: 'Fira Code', monospace; font-size: 1.8rem; font-weight: 700; 
+            margin-bottom: 40px; color: #fff; text-align: center;
+        }
+        .section-title span { color: #00ffaa; }
+
+        .app-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+
+        /* 💎 CYBER APP CARD */
+        .app-card {
+            background: rgba(10, 10, 10, 0.8);
+            border: 1px solid rgba(255,255,255,0.08); border-radius: 20px;
+            padding: 25px; transition: 0.4s; position: relative; overflow: hidden;
+            backdrop-filter: blur(10px);
+            display: flex; flex-direction: column;
+        }
+        
+        /* Neon Hover Glow */
+        .app-card:hover {
+            transform: translateY(-8px);
+            border-color: #00ffaa;
+            box-shadow: 0 15px 40px rgba(0, 255, 170, 0.2), inset 0 0 15px rgba(0, 255, 170, 0.05);
+        }
+
+        .app-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
+        .app-icon {
+            width: 65px; height: 65px; border-radius: 16px; display: flex; justify-content: center; align-items: center;
+            font-size: 2rem; color: #050505; background: #00ffaa; box-shadow: 0 0 15px rgba(0,255,170,0.5);
+            transition: 0.3s;
+        }
+        .app-card:hover .app-icon { transform: scale(1.1) rotate(-5deg); }
+        
+        /* Different Icon Colors */
+        .icon-blue { background: #38bdf8; box-shadow: 0 0 15px rgba(56,189,248,0.5); }
+        .icon-purple { background: #a855f7; box-shadow: 0 0 15px rgba(168,85,247,0.5); }
+        .icon-pink { background: #ec4899; box-shadow: 0 0 15px rgba(236,72,153,0.5); }
+
+        .app-version { font-family: 'Fira Code', monospace; font-size: 0.75rem; color: #94a3b8; background: rgba(255,255,255,0.05); padding: 4px 10px; border-radius: 5px; }
+
+        .app-title { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 10px; }
+        .app-desc { font-size: 0.95rem; color: #94a3b8; line-height: 1.6; margin-bottom: 25px; flex: 1; }
+
+        /* ⬇️ HACKER DOWNLOAD BUTTON */
+        .btn-download {
+            width: 100%; padding: 15px; border-radius: 12px;
+            background: transparent; color: #00ffaa; border: 1px solid #00ffaa;
+            font-family: 'Fira Code', monospace; font-size: 0.95rem; font-weight: 700;
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+            cursor: pointer; transition: 0.3s; text-decoration: none; text-transform: uppercase;
+        }
+        .btn-download:hover { background: #00ffaa; color: #050505; box-shadow: 0 0 20px rgba(0, 255, 170, 0.4); }
+
+        .btn-blue { color: #38bdf8; border-color: #38bdf8; }
+        .btn-blue:hover { background: #38bdf8; color: #050505; box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
+
+        /* =========================================
+           🛡️ DOWNLOAD MODAL POPUP
+           ========================================= */
+        .modal-overlay {
+            position: fixed; inset: 0; background: rgba(5, 5, 5, 0.85);
+            backdrop-filter: blur(10px); z-index: 1000;
+            display: flex; justify-content: center; align-items: center;
+            opacity: 0; visibility: hidden; transition: 0.3s;
+            padding: 20px;
+        }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+
+        .modal-box {
+            background: #0a0a0a; border: 1px solid #00ffaa;
+            border-radius: 20px; padding: 30px; width: 100%; max-width: 400px;
+            box-shadow: 0 10px 50px rgba(0, 255, 170, 0.2), inset 0 0 20px rgba(0, 255, 170, 0.05);
+            transform: translateY(20px); transition: 0.3s; text-align: center;
+            position: relative;
+        }
+        .modal-overlay.active .modal-box { transform: translateY(0); }
+
+        .close-btn {
+            position: absolute; top: 15px; right: 20px; color: #94a3b8;
+            font-size: 1.2rem; cursor: pointer; transition: 0.3s;
+        }
+        .close-btn:hover { color: #ff5f56; }
+
+        .modal-icon {
+            width: 60px; height: 60px; background: rgba(0, 255, 170, 0.1);
+            color: #00ffaa; font-size: 1.8rem; display: flex; justify-content: center; align-items: center;
+            border-radius: 50%; margin: 0 auto 15px; border: 1px dashed #00ffaa;
+        }
+
+        .modal-title { font-size: 1.3rem; font-weight: 800; color: #fff; margin-bottom: 5px; }
+        .modal-desc { font-size: 0.85rem; color: #94a3b8; font-family: 'Fira Code', monospace; margin-bottom: 25px; }
+
+        .platform-btns { display: flex; flex-direction: column; gap: 15px; }
+        
+        .btn-platform {
+            width: 100%; padding: 15px; border-radius: 12px; font-size: 1rem; font-weight: 700;
+            display: flex; align-items: center; justify-content: center; gap: 12px;
+            cursor: pointer; transition: 0.3s; text-decoration: none;
+        }
+        
+        .btn-windows {
+            background: rgba(56, 189, 248, 0.1); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.4);
+        }
+        .btn-windows:hover { background: #38bdf8; color: #050505; box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
+
+        .btn-android {
+            background: rgba(39, 201, 63, 0.1); color: #27c93f; border: 1px solid rgba(39, 201, 63, 0.4);
+        }
+        .btn-android:hover { background: #27c93f; color: #050505; box-shadow: 0 0 20px rgba(39, 201, 63, 0.4); }
+
+        /* FOOTER */
+        footer { border-top: 1px dashed rgba(0,255,170,0.2); padding: 30px 5%; text-align: center; color: #64748b; font-family: 'Fira Code', monospace; font-size: 0.85rem; }
+        footer span { color: #00ffaa; }
+
+        @media screen and (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .typewriter { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NEON NAVBAR -->
+    <nav class="navbar">
+        <a href="#" class="brand-logo">
+            <i class="fa-solid fa-terminal"></i> Raju.<span>Dev</span>
+        </a>
+        <div class="nav-menu">
+            <a href="#">~/home</a>
+            <a href="#vault">~/apps</a>
+            <a href="#">~/contact</a>
+        </div>
+    </nav>
+
+    <!-- TERMINAL HERO SECTION -->
+    <header class="hero">
+        <div class="terminal-box">
+            <div class="terminal-header">
+                <div class="dot red"></div>
+                <div class="dot yellow"></div>
+                <div class="dot green"></div>
+            </div>
+            <div class="typewriter">
+                > root@raju-kumar:~$ initiating_portfolio...
+            </div>
+        </div>
+        <h1>Full-Stack Developer <br>& <span>App Architect</span></h1>
+        <p>Building secure, scalable, and responsive applications. Explore my collection of Android apps, Python backend systems, and custom UI projects.</p>
+    </header>
+
+    <!-- APP VAULT GRID -->
+    <section id="vault" class="vault-section">
+        <div class="section-title"><i class="fa-solid fa-folder-tree"></i> ./app_<span>vault</span></div>
+        
+        <div class="app-grid">
+            
+            <!-- App 1: BC Sir Hub -->
+            <div class="app-card">
+                <div class="app-top">
+                    <div class="app-icon icon-blue"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <span class="app-version">v2.0.1</span>
+                </div>
+                <h3 class="app-title">BC Sir Hub</h3>
+                <p class="app-desc">A premium educational platform featuring live lectures, secure PDF viewers, mock tests, and daily quizzes.</p>
+                <!-- 🟢 ONCLICK FUNCTION ADDED -->
+                <button onclick="openModal('BC Sir Hub', 'https://github.com/yourusername/bcsirhub/releases/download/v2.0.1/BCSirHub_v2.0.1_Windows.exe', 'https://github.com/yourusername/bcsirhub/releases/download/v2.0.1/BCSirHub_v2.0.1_Android.apk')" class="btn-download btn-blue">
+                    <i class="fa-solid fa-cloud-arrow-down"></i> Download App
+                </button>
+            </div>
+
+            <!-- App 2: ClassTrack -->
+            <div class="app-card">
+                <div class="app-top">
+                    <div class="app-icon"><i class="fa-solid fa-clipboard-user"></i></div>
+                    <span class="app-version">v1.2.0</span>
+                </div>
+                <h3 class="app-title">ClassTrack</h3>
+                <p class="app-desc">Smart Android application for managing student attendance, assignments, and class schedules with real-time cloud sync.</p>
+                <button onclick="openModal('ClassTrack', 'https://github.com/yourusername/classtrack/releases/download/v1.2.0/ClassTrack_v1.2.0_Windows.exe', 'https://github.com/yourusername/classtrack/releases/download/v1.2.0/ClassTrack_v1.2.0_Android.apk')" class="btn-download">
+                    <i class="fa-solid fa-cloud-arrow-down"></i> Download App
+                </button>
+            </div>
+
+            <!-- App 3: AttendX -->
+            <div class="app-card">
+                <div class="app-top">
+                    <div class="app-icon icon-purple"><i class="fa-solid fa-calendar-check"></i></div>
+                    <span class="app-version">v1.0.0</span>
+                </div>
+                <h3 class="app-title">AttendX</h3>
+                <p class="app-desc">A powerful server-side web application deployed on Railway for real-time attendance tracking and dashboard management.</p>
+                <button onclick="openModal('AttendX', 'https://github.com/yourusername/attendx/releases/download/v1.0.0/AttendX_v1.0.0_Windows.exe', 'https://github.com/yourusername/attendx/releases/download/v1.0.0/AttendX_v1.0.0_Android.apk')" class="btn-download" style="color: #a855f7; border-color: #a855f7;">
+                    <i class="fa-solid fa-cloud-arrow-down"></i> Download App
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>sys.exit(0) // Developed with passion by <span>Raju Kumar</span> © 2026</p>
+    </footer>
+
+    <!-- 🛡️ DOWNLOAD MODAL POPUP -->
+    <div class="modal-overlay" id="downloadModal">
+        <div class="modal-box">
+            <i class="fa-solid fa-xmark close-btn" onclick="closeModal()"></i>
+            <div class="modal-icon"><i class="fa-solid fa-download"></i></div>
+            <h3 class="modal-title" id="modalAppName">App Name</h3>
+            <p class="modal-desc">Select your operating system</p>
+            
+            <div class="platform-btns">
+                <a href="#" id="winLink" class="btn-platform btn-windows">
+                    <i class="fa-brands fa-windows"></i> Windows / PC (.exe)
+                </a>
+                <a href="#" id="andLink" class="btn-platform btn-android">
+                    <i class="fa-brands fa-android"></i> Android (.apk)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Modal Open & Close Logic
+        function openModal(appName, winUrl, andUrl) {
+            document.getElementById('modalAppName').innerText = appName;
+            document.getElementById('winLink').href = winUrl;
+            document.getElementById('andLink').href = andUrl;
+            document.getElementById('downloadModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('downloadModal').classList.remove('active');
+        }
+
+        // Close modal when clicking outside the box
+        document.getElementById('downloadModal').addEventListener('click', function(e) {
+            if(e.target === this) {
+                closeModal();
+            }
+        });
+    </script>
+
+</body>
+</html>
